@@ -1,0 +1,59 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tDwoG2M5Ar72U9vx0Cxo="
+    crossorigin=""/>
+  <title>Troop 382</title>
+</head>
+<body>
+<header>
+    <h1>Welcome to BSA Troop 382</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="trip.html">Upcoming Trip</a>
+      <a href="impact.html">Community Impact</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="patrol_meetings.html">Patrol Meetings</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+<section id="impact-tracker">
+  <h2>🌟 Community Impact Tracker</h2>
+  <div class="impact-grid">
+    <div class="impact-card" id="hours">Total Service Hours: <span>0</span></div>
+    <div class="impact-card" id="co2">CO₂ Saved: <span>0</span> lbs</div>
+    <div class="impact-card" id="food">Food Collected: <span>0</span> lbs</div>
+    <div class="impact-card" id="people">People Helped: <span>0</span></div>
+  </div>
+  <div id="impact-map"></div>
+</section>
+<section id="eagle-projects">
+  <h2>🦅 Recent Eagle Projects</h2>
+
+  <div class="eagle-project-card">
+    <h3>John D. – Park Trail Restoration</h3>
+    <p>Date: June 2024</p>
+    <p>Rebuilt 300 feet of trail, installed signage, and added erosion control.</p>
+  </div>
+
+  <div class="eagle-project-card">
+    <h3>Ryan S. – Community Garden Build</h3>
+    <p>Date: May 2024</p>
+    <p>Constructed 12 raised beds, irrigation lines, and a tool shed.</p>
+  </div>
+</section>
+<footer>
+    <p>© 2025 Troop 382 | Hicksville, NY</p>
+    <!-- Accessibility Toggles (GLOBAL) -->
+  <button id="contrast-toggle" aria-label="Toggle high contrast mode">High Contrast</button>
+  <button id="dyslexia-toggle" aria-label="Toggle dyslexia-friendly mode">Dyslexia Mode</button>
+  </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+    <script src="script.js" defer></script>
+</body>

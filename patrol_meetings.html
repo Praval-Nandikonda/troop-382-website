@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css" />
+  <title>Troop 382 – Patrol Meetings</title>
+</head>
+
+<body>
+
+<header>
+  <h1>Welcome to BSA Troop 382</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="trip.html">Upcoming Trip</a>
+    <a href="impact.html">Community Impact</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="patrol_meetings.html">Patrol Meetings</a>
+    <a href="onboarding.html">Onboarding</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- ===========================
+      PASSWORD GATE (OPTION A)
+=========================== -->
+<div id="lock-screen">
+  <h2>Patrol Meetings – Members Only</h2>
+  <p>Enter the troop password to continue:</p>
+  <input type="password" id="access-password" placeholder="Password">
+  <button onclick="checkPassword()">Enter</button>
+  <p id="error" style="color:red; display:none;">Incorrect password</p>
+</div>
+
+<!-- ===========================
+      PROTECTED CONTENT
+=========================== -->
+<div id="protected-content" style="display:none;">
+
+  <section id="patrol_meetings">
+    <h2>Patrol Meetings</h2>
+
+    <p>Chunky Monkeys:
+      <strong><a href="insert_your_google_meet_link_here">Tuesdays at 6:00 PM</a></strong>
+    </p>
+
+    <p>The Kongs:
+      <strong><a href="insert_your_google_meet_link_here">Wednesdays at 7:30 PM</a></strong>
+    </p>
+
+  </section>
+
+</div>
+
+<footer>
+  <p>© 2025 Troop 382 | Hicksville, NY</p>
+  <button id="contrast-toggle" aria-label="Toggle high contrast mode">High Contrast</button>
+  <button id="dyslexia-toggle" aria-label="Toggle dyslexia-friendly mode">Dyslexia Mode</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

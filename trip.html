@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Troop 382</title>
+
+    <!-- Leaflet Map Library -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+    <h1>Welcome to BSA Troop 382</h1>
+        <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="trip.html">Upcoming Trip</a>
+        <a href="impact.html">Community Impact</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="patrol_meetings.html">Patrol Meetings</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+<h1 id="page-title">Trip Planner</h1>
+
+
+
+<hr>
+
+<!-- Weather -->
+<h2>Weather Forecast</h2>
+<div id="forecast"></div>
+
+<hr>
+
+<!-- Packing List -->
+<h2>Troop Packing List</h2>
+<div id="personal-checklist"></div>
+
+<hr>
+
+<!-- Duty Roster -->
+<h2>Patrol Duty Roster</h2>
+<table id="duty-roster" border="1" cellpadding="5"></table>
+
+<hr>
+
+<!-- Map -->
+<h2>Route Map</h2>
+<iframe 
+    class="map-embed"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3014.0621564902585!2d-72.84150262466638!3d40.93630492385464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e85d8d03f76399%3A0x758dc09ad0abedde!2sSchiff%20Scout%20Reservation!5e0!3m2!1sen!2sus!4v1767124646768!5m2!1sen!2sus"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+<hr>
+
+<footer>
+    <p>© 2025 Troop 382 | Hicksville, NY</p>
+    <!-- Accessibility Toggles (GLOBAL) -->
+    <button id="contrast-toggle" aria-label="Toggle high contrast mode">High Contrast</button>
+    <button id="dyslexia-toggle" aria-label="Toggle dyslexia-friendly mode">Dyslexia Mode</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
