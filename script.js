@@ -242,5 +242,77 @@ document.addEventListener("DOMContentLoaded", () => {
   if (filterBox) filterBox.addEventListener("change", applyRankFilter);
 
   loadRank("scout");
+  /* ===========================
+   MERIT BADGE LIBRARY
+=========================== */
+
+const meritBadges = [
+  {
+    name: "First Aid",
+    img: "https://www.scouting.org/wp-content/uploads/2022/10/First-Aid.png",
+    reqs: [
+      "Explain what first aid is",
+      "Show how to treat cuts and scrapes",
+      "Demonstrate CPR steps",
+      "Explain the importance of the recovery position"
+    ]
+  },
+  {
+    name: "Camping",
+    img: "https://www.scouting.org/wp-content/uploads/2022/10/Camping.png",
+    reqs: [
+      "Show how to pitch a tent",
+      "Explain Leave No Trace",
+      "Plan a campout menu",
+      "Demonstrate safe fire building"
+    ]
+  },
+  {
+    name: "Cooking",
+    img: "https://www.scouting.org/wp-content/uploads/2022/10/Cooking.png",
+    reqs: [
+      "Explain food safety",
+      "Plan a balanced meal",
+      "Cook a meal outdoors",
+      "Demonstrate proper cleanup"
+    ]
+  }
+];
+
+function renderBadgeLibrary() {
+  const grid = document.getElementById("badge-grid");
+  if (!grid) return;
+
+  grid.innerHTML = meritBadges.map(badge => `
+    <div class="badge-card" data-name="${badge.name}">
+      <img src="${badge.img}">
+      <h3>${badge.name}</h3>
+    </div>
+  `).join("");
+
+  document.querySelectorAll(".badge-card").forEach(card => {
+    card.addEventListener("click", () => openBadge(card.dataset.name));
+  });
+}
+
+function openBadge(name) {
+  const badge = meritBadges.find(b => b.name === name);
+  if (!badge) return;
+
+  document.getElementById("modal-title").textContent = badge.name;
+  document.getElementById("modal-img").src = badge.img;
+
+  document.getElementById("modal-reqs").innerHTML =
+    badge.reqs.map(r => `<li>${r}</li>`).join("");
+
+  document.getElementById("badge-modal").style.display = "flex";
+}
+
+document.getElementById("modal-close")?.addEventListener("click", () => {
+  document.getElementById("badge-modal").style.display = "none";
+});
+
+document.addEventListener("DOMContentLoaded", renderBadgeLibrary);
+
 
 }); // END DOMContentLoaded
