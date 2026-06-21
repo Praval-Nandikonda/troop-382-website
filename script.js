@@ -210,5 +210,135 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+/* ===========================
+   RANK ADVANCEMENT TRACKER
+=========================== */
+
+const rankRequirements = {
+  scout: [
+    "Learn and repeat the Scout Oath",
+    "Learn and repeat the Scout Law",
+    "Explain patrol method",
+    "Show how to tie a square knot"
+  ],
+  tenderfoot: [
+    "Camp overnight",
+    "Demonstrate basic first aid",
+    "Explain the buddy system",
+    "Show how to whip and fuse a rope"
+  ],
+  secondclass: [
+    "Cook a meal on a campout",
+    "Use a map and compass",
+    "Demonstrate fire building",
+    "Show swimming skills"
+  ],
+  firstclass: [
+    "Plan a patrol activity",
+    "Navigate using a map and compass",
+    "Identify 10 plants/animals",
+    "Demonstrate lashings"
+  ],
+  star: [
+    "Earn 6 merit badges",
+    "Serve in a leadership position",
+    "Complete service hours"
+  ],
+  life: [
+    "Earn 5 more merit badges",
+    "Serve in leadership",
+    "Plan and participate in service"
+  ],
+  eagle: [
+    "Earn 21 merit badges",
+    "Serve actively in troop",
+    "Plan and complete Eagle Project"
+  ]
+};
+
+function getRankKey(name, rank, index) {
+  return `${name}-${rank}-${index}`;
+}
+
+function loadRank(rank) {
+  const name = document.getElementById("scoutName")?.value.trim();
+  if (!name) {
+    const reqBox = document.getElementById("requirements");
+    if (reqBox) reqBox.innerHTML = "<p style='color:red;'>Enter your name to load progress.</p>";
+    return;
+  }
+
+  const container = document.getElementById("requirements");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const reqs = rankRequirements[rank];
+  let completedCount = 0;
+
+  reqs.forEach((req, index) => {
+    const key = getRankKey(name, rank, index);
+    const saved = localStorage.getItem(key) === "true";
+
+    if (saved) completedCount++;
+
+    const div = document.createElement("div");
+    div.className = "req" + (saved ? " completed" : "");
+    div.innerHTML = `
+      <input type="checkbox" id="${key}" ${saved ? "checked" : ""}>
+      <label for="${key}">${req}</label>
+    `;
+
+    div.querySelector("input").addEventListener("change", (e) => {
+      localStorage.setItem(key, e.target.checked);
+      loadRank(rank);
+    });
+
+    container.appendChild(div);
+  });
+
+  updateRankProgress(completedCount, reqs.length);
+  applyRankFilter();
+}
+
+function updateRankProgress(done, total) {
+  const bar = document.getElementById("progressBar");
+  if (!bar) return;
+  bar.style.width = (done / total) * 100 + "%";
+}
+
+function applyRankFilter() {
+  const showIncomplete = document.getElementById("showIncomplete")?.checked;
+  document.querySelectorAll(".req").forEach(req => {
+    req.style.display =
+      showIncomplete && req.classList.contains("completed")
+        ? "none"
+        : "flex";
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const rankSelect = document.getElementById("rankSelect");
+  const nameInput = document.getElementById("scoutName");
+  const filterBox = document.getElementById("showIncomplete");
+
+  if (rankSelect) {
+    rankSelect.addEventListener("change", () => {
+      loadRank(rankSelect.value);
+    });
+  }
+
+  if (nameInput) {
+    nameInput.addEventListener("input", () => {
+      loadRank(rankSelect.value);
+    });
+  }
+
+  if (filterBox) {
+    filterBox.addEventListener("change", applyRankFilter);
+  }
+
+  loadRank("scout");
+});
 
 });
