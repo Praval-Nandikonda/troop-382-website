@@ -1,64 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Rank Advancement Tracker</title>
-    <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-            background: #f0f4f8;
-        }
-        h1 {
-            text-align: center;
-        }
-        .name-box, .rank-select {
-            margin: 20px auto;
-            display: block;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .req {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-            padding: 12px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            transition: 0.2s;
-        }
-        .req.completed {
-            background: #d4f8d4;
-        }
-        .req input {
-            margin-right: 10px;
-            transform: scale(1.3);
-        }
-        .progress-container {
-            width: 100%;
-            background: #ddd;
-            border-radius: 20px;
-            margin: 20px 0;
-            height: 25px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: #4caf50;
-            transition: width 0.4s ease;
-        }
-        .toggle-container {
-            margin: 10px 0;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Rank Advancement | Troop 382</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+<header>
+    <h1>Welcome to BSA Troop 382</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="trip.html">Upcoming Trip</a>
+      <a href="impact.html">Community Impact</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="patrol_meetings.html">Patrol Meetings</a>
+      <a href="rank-advancements.html" class="active">Rank Advancement</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-<h1>Rank Advancement Tracker</h1>
+<h1 id="page-title">Rank Advancement Tracker</h1>
 
+<!-- SCOUT NAME -->
 <input id="scoutName" class="name-box" placeholder="Enter your name">
 
+<!-- RANK SELECTOR -->
 <select id="rankSelect" class="rank-select">
     <option value="scout">Scout</option>
     <option value="tenderfoot">Tenderfoot</option>
@@ -69,6 +40,7 @@
     <option value="eagle">Eagle</option>
 </select>
 
+<!-- FILTER -->
 <div class="toggle-container">
     <label>
         <input type="checkbox" id="showIncomplete">
@@ -76,13 +48,23 @@
     </label>
 </div>
 
+<!-- PROGRESS BAR -->
 <div class="progress-container">
     <div class="progress-bar" id="progressBar"></div>
 </div>
 
+<!-- REQUIREMENTS -->
 <div id="requirements"></div>
 
+<footer>
+    <p>© 2025 Troop 382 | Hicksville, NY</p>
+    <button id="contrast-toggle">High Contrast</button>
+    <button id="dyslexia-toggle">Dyslexia Mode</button>
+</footer>
+
+<!-- Rank Advancement Script -->
 <script>
+/* REQUIREMENTS DATA */
 const rankRequirements = {
     scout: [
         "Learn and repeat the Scout Oath",
@@ -125,10 +107,12 @@ const rankRequirements = {
     ]
 };
 
+/* UNIQUE KEY PER SCOUT */
 function getKey(name, rank, index) {
     return `${name}-${rank}-${index}`;
 }
 
+/* LOAD RANK */
 function loadRank(rank) {
     const name = document.getElementById("scoutName").value.trim();
     if (!name) {
@@ -168,23 +152,25 @@ function loadRank(rank) {
     applyFilter();
 }
 
+/* PROGRESS BAR */
 function updateProgress(done, total) {
     const bar = document.getElementById("progressBar");
     const percent = (done / total) * 100;
     bar.style.width = percent + "%";
 }
 
+/* FILTER */
 function applyFilter() {
     const showIncomplete = document.getElementById("showIncomplete").checked;
     document.querySelectorAll(".req").forEach(req => {
-        if (showIncomplete && req.classList.contains("completed")) {
-            req.style.display = "none";
-        } else {
-            req.style.display = "flex";
-        }
+        req.style.display =
+            showIncomplete && req.classList.contains("completed")
+            ? "none"
+            : "flex";
     });
 }
 
+/* EVENT LISTENERS */
 document.getElementById("rankSelect").addEventListener("change", (e) => {
     loadRank(e.target.value);
 });
@@ -194,6 +180,9 @@ document.getElementById("showIncomplete").addEventListener("change", applyFilter
 document.getElementById("scoutName").addEventListener("input", () => {
     loadRank(document.getElementById("rankSelect").value);
 });
+
+/* INITIAL LOAD */
+loadRank("scout");
 </script>
 
 </body>
