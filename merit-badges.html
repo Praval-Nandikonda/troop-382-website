@@ -1,1 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merit Badges | Troop 382</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
+<body>
+<header>
+    <h1>Welcome to BSA Troop 382</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="trip.html">Upcoming Trip</a>
+      <a href="impact.html">Community Impact</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="announcements.html">Announcements</a>
+      <a href="patrol_meetings.html">Patrol Meetings</a>
+      <a href="rank-advancements.html">Rank Advancement</a>
+      <a href="merit-badges.html" class="active">Merit Badges</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<h1 id="page-title">Merit Badge Library</h1>
+
+<!-- BADGE GRID -->
+<div id="badge-grid" class="badge-grid"></div>
+
+<!-- MODAL -->
+<div id="badge-modal" class="modal">
+  <div class="modal-content">
+    <span id="modal-close" class="close">&times;</span>
+    <h2 id="modal-title"></h2>
+    <img id="modal-img" class="badge-img">
+    <ul id="modal-reqs"></ul>
+  </div>
+</div>
+
+<footer>
+    <p>© 2025 Troop 382 | Hicksville, NY</p>
+    <button id="contrast-toggle">High Contrast</button>
+    <button id="dyslexia-toggle">Dyslexia Mode</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
