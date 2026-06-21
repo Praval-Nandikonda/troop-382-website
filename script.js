@@ -3,7 +3,7 @@
 =========================== */
 function checkPassword() {
   const correctPassword = "troop382"; // <-- CHANGE THIS
-  const input = document.getElementById("access-password").value;
+  const input = document.getElementById("access-password")?.value;
 
   if (input === correctPassword) {
     document.getElementById("lock-screen").style.display = "none";
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const box = document.getElementById("personal-checklist");
     if (!box) return;
 
-    box.innerHTML = personalItems.slice(0, 10).map(item => `
+    box.innerHTML = personalItems.map(item => `
       <label><input type="checkbox"> ${item}</label>
     `).join("");
   }
@@ -210,6 +210,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+}); // END OF MAIN DOMContentLoaded
+
+
+
 /* ===========================
    RANK ADVANCEMENT TRACKER
 =========================== */
@@ -262,14 +267,14 @@ function getRankKey(name, rank, index) {
 
 function loadRank(rank) {
   const name = document.getElementById("scoutName")?.value.trim();
+  const container = document.getElementById("requirements");
+
+  if (!container) return;
+
   if (!name) {
-    const reqBox = document.getElementById("requirements");
-    if (reqBox) reqBox.innerHTML = "<p style='color:red;'>Enter your name to load progress.</p>";
+    container.innerHTML = "<p style='color:red;'>Enter your name to load progress.</p>";
     return;
   }
-
-  const container = document.getElementById("requirements");
-  if (!container) return;
 
   container.innerHTML = "";
 
@@ -339,6 +344,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadRank("scout");
-});
-
 });
